@@ -18,7 +18,7 @@ python word_counter.py resources/Dune1_Chapter1.txt output/Dune_Chapter1_New_Wor
 ```
 3. the result will be writen in the file named `result.txt`
 
-# contact me
+# contact us
 qq: 450550330
 
 email: 
