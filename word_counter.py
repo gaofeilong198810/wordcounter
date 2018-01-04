@@ -30,10 +30,14 @@ def get_known_words(file):
 
 def get_words(file, known_words):
     with open (file) as f:
+        i = 0
         words_box=[]
         for line in f:                           
             words = [w for w in nltk.regexp_tokenize(line, '[A-Za-z\']+') if not "'" in w]
             words_box.extend(merge(words, known_words))
+            if i % 100 == 0:
+                print "line %d done..." % i
+            i += 1
     return OrderedCounter(words_box)  
 
 
