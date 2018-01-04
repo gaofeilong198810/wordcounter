@@ -18,6 +18,9 @@ python word_counter.py resources/Dune1_Chapter1.txt output/Dune_Chapter1_New_Wor
 ```
 3. the result will be writen in the file named `result.txt`
 
+# how to manually download a nltk corpus
+http://pan.baidu.com/s/1hq7UUFU
+
 # contact us
 qq: 450550330
 
@@ -26,4 +29,3 @@ pengyufreedom@aliyun.com
 gaofeilong198810@163.com
 
 please contact us when you get any problem!
-
