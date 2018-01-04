@@ -40,11 +40,12 @@ def get_words(file, known_words):
 def merge(words, known_words):
     new_words = []
     for word in words:
-        tag = nltk.pos_tag(word_tokenize(word)) # tag is like [('bigger', 'JJR')]
+        tag = nltk.pos_tag(word_tokenize(word))
         pos = get_wordnet_pos(tag[0][1])
         if pos:
             lemmatized_word = lmtzr.lemmatize(word, pos)
-            if (lemmatized_word not in known_words) and (lemmatized_word.lower() not in known_words):
+            # print "sig[%s]: if word[%s] lemmatization[%s] lower[%s] in known_words" % (lemmatized_word in known_words, word, lemmatized_word, lemmatized_word.lower())
+            if (lemmatized_word.lower() not in known_words) and (len(lemmatized_word) > 2):
                 new_words.append(lemmatized_word)
     return new_words
 
