@@ -17,15 +17,18 @@ class OrderedCounter(Counter, OrderedDict):
         return self.__class__, (OrderedDict(self),)
 
 
-def get_known_words(file):
-    stop_words = set(stopwords.words('english'))
-    known_words = set()
-    with open(file) as f:
+def get_known_words():
+    words = set()
+    with open('resources/known_words.txt') as f:
         for line in f:
-            known_words.add(line.strip()) 
+            words.add(line.strip().lower()) 
+    with open('resources/Dune_Character_List.txt') as f:
+        for line in f:
+            words.add(line.strip().lower()) 
 
-    blacklist_words = known_words.union(stop_words)
-    return blacklist_words
+    stop_words = set(stopwords.words('english'))
+    known_words = words.union(stop_words)
+    return known_words
 
 
 def get_words(file, known_words):
@@ -50,7 +53,7 @@ def merge(words, known_words):
             lemmatized_word = lmtzr.lemmatize(word, pos)
             # print "sig[%s]: if word[%s] lemmatization[%s] lower[%s] in known_words" % (lemmatized_word in known_words, word, lemmatized_word, lemmatized_word.lower())
             if (lemmatized_word.lower() not in known_words) and (len(lemmatized_word) > 2):
-                new_words.append(lemmatized_word)
+                new_words.append(lemmatized_word.lower())
     return new_words
 
 
@@ -87,14 +90,13 @@ def write_to_file(words, filename):
 if __name__=='__main__':
     """ 
     Usage: 
-    python word_counter.py resources/Dune1_Chapter1.txt output/Dune_Chapter1_New_Word_Order_By_Word.txt resources/known_words_1_1230.txt WORD
-    python word_counter.py resources/Dune1_Chapter1.txt output/Dune_Chapter1_New_Word_Order_By_Count.txt resources/known_words_1_1230.txt COUNT
+    python word_counter.py resources/Dune1_Chapter1.txt output/Dune_Chapter1_New_Word_Order_By_Word.txt WORD
+    python word_counter.py resources/Dune1_Chapter1.txt output/Dune_Chapter1_New_Word_Order_By_Count.txt COUNT
     """
     book = sys.argv[1]
     word_count_result_file = sys.argv[2]
-    known_words_file = sys.argv[3]
-    order_type = sys.argv[4]
-    known_words = get_known_words(known_words_file)
+    order_type = sys.argv[3]
+    known_words = get_known_words()
     print "counting..."
     words = get_words(book, known_words)
     print "writing file..."
