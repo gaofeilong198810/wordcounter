@@ -29,3 +29,8 @@ pengyufreedom@aliyun.com
 gaofeilong198810@163.com
 
 please contact us when you get any problem!
+
+# merge command
+```
+join -a1 -o 1.1 2.1 c1s.txt youdaoss.txt 
+```

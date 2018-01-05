@@ -25,6 +25,9 @@ def get_known_words():
     with open('resources/Dune_Character_List.txt') as f:
         for line in f:
             words.add(line.strip().lower()) 
+    with open('resources/Youdao_Dictionary_Words.txt') as f:
+        for line in f:
+            words.add(line.strip().lower()) 
 
     stop_words = set(stopwords.words('english'))
     known_words = words.union(stop_words)
