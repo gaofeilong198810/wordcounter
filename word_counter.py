@@ -1,4 +1,11 @@
-import sys,re,collections,nltk
+import os
+import re
+import sys
+import nltk
+import collections
+
+from os import listdir
+from os.path import isfile, join
 from collections import Counter, OrderedDict
 from nltk.stem.wordnet import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
@@ -19,18 +26,13 @@ class OrderedCounter(Counter, OrderedDict):
 
 def get_known_words():
     words = set()
-    with open('resources/known_words.txt') as f:
-        for line in f:
-            words.add(line.strip().lower()) 
-    with open('resources/Dune_Character_List.txt') as f:
-        for line in f:
-            words.add(line.strip().lower()) 
-    with open('resources/Youdao_Dictionary_Words.txt') as f:
-        for line in f:
-            words.add(line.strip().lower()) 
+    dirname = "resources"
+    known_words = set(stopwords.words('english'))
+    for filename in [filename for filename in listdir(dirname)]:
+        with open(dirname + "/" + filename) as f:
+            for line in f:
+                known_words.add(line.strip().lower()) 
 
-    stop_words = set(stopwords.words('english'))
-    known_words = words.union(stop_words)
     return known_words
 
 
@@ -98,7 +100,7 @@ if __name__=='__main__':
     """
     book = sys.argv[1]
     word_count_result_file = sys.argv[2]
-    order_type = sys.argv[3]
+    order_type = "WORD" if len(sys.argv) < 4 else sys.argv[3]
     known_words = get_known_words()
     print "counting..."
     words = get_words(book, known_words)
