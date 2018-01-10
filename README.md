@@ -22,8 +22,13 @@ python word_counter.py input/bookname.txt output/wordfile.txt [WORD|COUNT]
 - python 2.x or python 3+
 - nltk
 
-# 手动下载nltk语料库
-http://pan.baidu.com/s/1hq7UUFU
+# 安装nltk语料库
+## 安装nltk
+```
+pip install nltk
+```
+安装完成后，即可执行python word_counter统计，会要求下载语料库的包，在线下载比较慢，可以选择手动下载，下载完成后解压将nltk_data放在用户的home目录下即可。nltk下载地址：
+https://pan.baidu.com/s/1kWuhmXT
 
 # 联系我
 gaofeilong198810@163.com
