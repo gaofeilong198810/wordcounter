@@ -1,11 +1,11 @@
 # 简介
 - 用于解决阅读英语小说时，单词不认识的尴尬情况
 - 使用nltk统计英语小说中的单词频次，排除掉停词、地名、人名、已经认识的单词
-- 统计结果可以按照单词出现的频次排序（倒序） or 按照单词出现的先后顺序排序
+- 统计结果可以按照单词出现的频次排序（倒序，适合一次背整本书不认识的仁慈） or 按照单词出现的先后顺序排序（适合在每一章阅读之前背单词）
 
 # 咋用
-1. 把需要统计的英文单词书放在input目录下
-2. resource下所有的文件都会被认为是黑名单，包括：书内的人名、地名、已经认识的单词等等
+1. 把需要统计的英文单词书放在input目录下，仅支持txt格式
+2. resource下所有的文件都会被认为是黑名单而不参与统计，包括：书内的人名、地名、已经认识的单词等等，这些都不会参与统计
 3. 执行（最后一个参数控制按照单词出现的顺序还是按照出现频次的顺序来排序）：
 ```
 python word_counter.py input/bookname.txt output/wordfile.txt [WORD|COUNT]
@@ -22,15 +22,8 @@ python word_counter.py input/bookname.txt output/wordfile.txt [WORD|COUNT]
 - python 2.x or python 3+
 - nltk
 
-# how to manually download a nltk corpus
+# 手动下载nltk语料库
 http://pan.baidu.com/s/1hq7UUFU
 
-# contact me
-
-email: 
+# 联系我
 gaofeilong198810@163.com
-
-## merge command
-```
-join -a1 -o 1.1 2.1 c1s.txt youdaoss.txt 
-```
