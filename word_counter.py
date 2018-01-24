@@ -95,8 +95,8 @@ def write_to_file(words, filename):
 if __name__=='__main__':
     """ 
     Usage: 
-    python word_counter.py resources/Dune1_Chapter1.txt output/Dune_Chapter1_New_Word_Order_By_Word.txt WORD
-    python word_counter.py resources/Dune1_Chapter1.txt output/Dune_Chapter1_New_Word_Order_By_Count.txt COUNT
+    python word_counter.py input/Dune1_Chapter1.txt output/Dune_Chapter1_New_Word_Order_By_Word.txt WORD
+    python word_counter.py input/Dune1_Chapter1.txt output/Dune_Chapter1_New_Word_Order_By_Count.txt COUNT
     """
     book = sys.argv[1]
     word_count_result_file = sys.argv[2]
